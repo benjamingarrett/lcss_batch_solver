@@ -1,0 +1,1 @@
+This project allows for solving a given instance of the longest common subsequence problem multiple times, making use of different settings for the caching module that it relies on.
