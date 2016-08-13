@@ -21,7 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux-x86
+CND_PLATFORM=GNU-Linux
+CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -34,12 +35,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/982968635/MurmurHash32.o \
-	${OBJECTDIR}/_ext/982968635/MurmurHash64A.o \
-	${OBJECTDIR}/_ext/1431108635/memo.o \
+	${OBJECTDIR}/_ext/c56916c5/MurmurHash32.o \
+	${OBJECTDIR}/_ext/c56916c5/MurmurHash64A.o \
+	${OBJECTDIR}/_ext/9c6fdb2b/lcss.o \
+	${OBJECTDIR}/_ext/554cfc1b/memo.o \
 	${OBJECTDIR}/lcss_batch_solve.o \
-	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/_ext/1670390997/lcss.o
+	${OBJECTDIR}/main.o
 
 
 # C Compiler Flags
@@ -64,37 +65,37 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lcss_batch_solver: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lcss_batch_solver ${OBJECTFILES} ${LDLIBSOPTIONS} 
+	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lcss_batch_solver ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/982968635/MurmurHash32.o: ../hashing/MurmurHash32.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/982968635
-	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/982968635/MurmurHash32.o ../hashing/MurmurHash32.c
+${OBJECTDIR}/_ext/c56916c5/MurmurHash32.o: ../hashing/MurmurHash32.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/c56916c5
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/c56916c5/MurmurHash32.o ../hashing/MurmurHash32.c
 
-${OBJECTDIR}/_ext/982968635/MurmurHash64A.o: ../hashing/MurmurHash64A.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/982968635
-	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/982968635/MurmurHash64A.o ../hashing/MurmurHash64A.c
+${OBJECTDIR}/_ext/c56916c5/MurmurHash64A.o: ../hashing/MurmurHash64A.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/c56916c5
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/c56916c5/MurmurHash64A.o ../hashing/MurmurHash64A.c
 
-${OBJECTDIR}/_ext/1431108635/memo.o: ../memoization/memo.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1431108635
-	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1431108635/memo.o ../memoization/memo.c
+${OBJECTDIR}/_ext/9c6fdb2b/lcss.o: ../lcss100/lcss.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/9c6fdb2b
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/9c6fdb2b/lcss.o ../lcss100/lcss.c
+
+${OBJECTDIR}/_ext/554cfc1b/memo.o: ../memoization/memo.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/554cfc1b
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/554cfc1b/memo.o ../memoization/memo.c
 
 ${OBJECTDIR}/lcss_batch_solve.o: lcss_batch_solve.c 
 	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/lcss_batch_solve.o lcss_batch_solve.c
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/lcss_batch_solve.o lcss_batch_solve.c
 
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.c
-
-${OBJECTDIR}/_ext/1670390997/lcss.o: ../lcss100/lcss.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1670390997
-	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1670390997/lcss.o ../lcss100/lcss.c
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
 
 # Subprojects
 .build-subprojects:
