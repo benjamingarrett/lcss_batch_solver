@@ -113,8 +113,8 @@ void lcss_binary_search(int argc, char **argv){
         exit(1);
     }
     instance_name = get_instance_name();
-    table_size = get_table_size();
-    queue_size = get_queue_size();
+    table_size = get_HASHTABLE_CAPACITY();
+    queue_size = get_PRIORITY_QUEUE_CAPACITY();
     
     /* new sweet spot: what queue size needed for normalized misses = 2 */
     cache_miss_threshold = 2 * (n+1) * (n+1);
@@ -188,7 +188,7 @@ void lcss_binary_search(int argc, char **argv){
         cache_misses = get_cache_misses();
         norm_misses[g] = (double)cache_misses / (double)( (n1+1) * (n2+1) - 1 );
 
-        queue_size = get_queue_size();
+        queue_size = get_PRIORITY_QUEUE_CAPACITY();
         norm_queue_size[g] = (double)queue_size / (double)( n );
 
         goal_value[g] = norm_queue_size[g]-norm_misses[g];
