@@ -161,10 +161,10 @@ void lcss_binary_search(int argc, char **argv){
             fclose(fp);
         #endif
         
-        reset_queue( new_queue_size[g] );
+        reset_lru_queue( new_queue_size[g] );
         reset_cache_misses();
         reset_subproblems();
-        reset_num_rebuilds();
+        reset_num_lru_rebuilds();
         
         /* for old sweet spot */
 /*
