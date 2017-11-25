@@ -13,7 +13,7 @@
  */
 int main(int argc, char** argv) {
 
-    lcss_batch_solve(argc, argv);
-    return (EXIT_SUCCESS);
+  lcss_batch_solve(argc, argv);
+  return (EXIT_SUCCESS);
 }
 

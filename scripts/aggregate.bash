@@ -7,7 +7,7 @@ do
   threshold=$(((($n+1)*($n+1)-1)*2))
   echo $threshold
 
-  #./lcss100 -s hashing -i ../lcss_instances/t/test$n-000-111 -q $n
+  #./lcss100 --caching_strategy linear_probe_hashing -i ../lcss_instances/t/test$n-000-111 --lru_queue_size $n
   for (( j=10; j<=10; j++ ))
   do
     for (( k=0; k<$num_instances; k++ ))
@@ -18,10 +18,11 @@ do
         instance=random-$n-$j-$k
         #instance=permutation$n-$j-$k
         #echo $instance $queue_size
-        #echo ./lcss100 -s hashing -i ../lcss_instances/r/$n/$instance
+        #echo ./lcss100 --caching_strategy linear_probe_hashing -i ../lcss_instances/r/$n/$instance
         #./lcss100 -s hashing -i ../lcss_instances/r/$n/$instance
-        echo ./lcss_batch_solver -s lru -i ../lcss_instances/r/$n/$instance -q $queue_size -t 25 -threshold $threshold
-        ./lcss_batch_solver -s lru -i ../lcss_instances/r/$n/$instance -q $queue_size -t 25 -threshold $threshold
+        # used to be -t 25 meaning 2^25 for the cache size now we use --cache_size 33554432
+        echo ./lcss_batch_solver --caching_strategy lru -i ../lcss_instances/r/$n/$instance --lru_queue_size $queue_size --cache_size 33554432 -threshold $threshold
+        ./lcss_batch_solver --caching_strategy lru -i ../lcss_instances/r/$n/$instance --lru_queue_size $queue_size --cache_size 33554432 -threshold $threshold
       done
     done
   done

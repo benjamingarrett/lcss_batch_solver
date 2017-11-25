@@ -6,19 +6,19 @@
  */
 
 #ifndef LCSS_BATCH_SOLVE_H
-#define	LCSS_BATCH_SOLVE_H
+#define LCSS_BATCH_SOLVE_H
 
-#ifdef	__cplusplus
+#ifdef __cplusplus
 extern "C" {
 #endif
 
-    #include<float.h>
-    #include "../lcss100/lcss.h"
-    void lcss_batch_solve(int argc, char **argv);
+#include<float.h>
+#include "../lcss100/lcss.h"
+  void lcss_batch_solve(int argc, char **argv);
 
-#ifdef	__cplusplus
+#ifdef __cplusplus
 }
 #endif
 
-#endif	/* LCSS_BATCH_SOLVE_H */
+#endif /* LCSS_BATCH_SOLVE_H */
 
