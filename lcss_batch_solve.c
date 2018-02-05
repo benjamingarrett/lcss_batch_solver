@@ -121,7 +121,7 @@ void lcss_binary_search(int argc, char **argv) {
 
 #ifdef WRITE_LOG
   fp = fopen(log_fname, "a");
-  fprintf(fp, "Setting cache miss threshold to %d\n", cache_miss_threshold);
+  fprintf(fp, "Setting cache miss threshold to %ld\n", cache_miss_threshold);
   fclose(fp);
 #endif
 
@@ -157,7 +157,7 @@ void lcss_binary_search(int argc, char **argv) {
 
 #ifdef WRITE_LOG
     fp = fopen(log_fname, "a");
-    fprintf(fp, "Resetting queue size to %d\n", new_queue_size[g]);
+    fprintf(fp, "Resetting queue size to %ld\n", new_queue_size[g]);
     fclose(fp);
 #endif
 
@@ -200,7 +200,7 @@ void lcss_binary_search(int argc, char **argv) {
 
 #ifdef WRITE_LOG
     fp = fopen(log_fname, "a");
-    fprintf(fp, "%s\t%s\t%d\t%d\t%d\t%d\t%d\t%d\t%f\t%f\t%f\t%f\t%f\t%d\n",
+    fprintf(fp, "%s\t%s\t%ld\t%ld\t%ld\t%ld\t%ld\t%ld\t%f\t%f\t%f\t%f\t%f\t%ld\n",
             caching_strategy, instance_name, n1, n2,
             table_size, queue_size, cache_misses, length,
             norm_misses[g], norm_queue_size[g], goal_value[g],
@@ -210,7 +210,7 @@ void lcss_binary_search(int argc, char **argv) {
 #endif
 
     brfp = fopen(aggregate_results_fname, "a");
-    fprintf(brfp, "%s,%s,%d,%d,%d,%d,%d,%d,%f,%f,%f,%f,%f,%d\n",
+    fprintf(brfp, "%s,%s,%ld,%ld,%ld,%ld,%ld,%ld,%f,%f,%f,%f,%f,%ld\n",
             caching_strategy, instance_name, n1, n2, table_size,
             queue_size, cache_misses, length, norm_misses[g], norm_queue_size[g],
             goal_value[g], statistics.elapsed_time,
