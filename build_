@@ -1,2 +1,0 @@
-make
-cp ./dist/Debug/GNU-Linux-x86/lcss_batch_solver .

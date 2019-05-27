@@ -12,8 +12,6 @@
 extern "C" {
 #endif
 
-#include<float.h>
-#include "../lcss100/lcss.h"
   void lcss_batch_solve(int argc, char **argv);
 
 #ifdef __cplusplus
