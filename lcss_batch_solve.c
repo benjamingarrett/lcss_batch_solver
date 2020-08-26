@@ -2,14 +2,11 @@
 #include "../lcss100/lcss.h"
 #include "lcss_batch_solve.h"
 
-#define FALSE 0
-#define TRUE 1
-
 #define UP 2
 #define DOWN 3
 #define STOP 4
 
-#define WRITE_LOG  
+//#define WRITE_LOG  
 
 double epsilon = 0.0625;
 
@@ -38,14 +35,12 @@ uint8_t decide(double norm_misses, double norm_queue_size){
 }
  */
 
+FILE * fp;
 
 uint8_t decide(double norm_misses, double norm_queue_size){
-  #ifdef WRITE_LOG
-  FILE * fp;
-  #endif
   if(norm_misses > 2.0){
     #ifdef WRITE_LOG
-    fp = fopen(log_fname, "a");
+    fp=fopen(log_fname, "a");
     fprintf(fp, "normalized cache misses > 2.0, increase multiple\n");
     fclose(fp);
     #endif
@@ -53,7 +48,7 @@ uint8_t decide(double norm_misses, double norm_queue_size){
   }
   if(norm_misses < 2.0){
     #ifdef WRITE_LOG
-    fp = fopen(log_fname, "a");
+    fp=fopen(log_fname, "a");
     fprintf(fp, "normalized cache misses < 2.0, decrease queue size\n");
     fclose(fp);
     #endif
@@ -63,7 +58,7 @@ uint8_t decide(double norm_misses, double norm_queue_size){
     return STOP;
   }
   #ifdef WRITE_LOG
-  fp = fopen(log_fname, "a");
+  fp=fopen(log_fname, "a");
   fprintf(fp, "problem with decide function %f %f\n", norm_misses, norm_queue_size);
   fclose(fp);
   #endif
@@ -85,7 +80,7 @@ void lcss_binary_search(int argc, char **argv){
   double * goal_value;
   char * caching_strategy;
   char * instance_name;
-  initialize_lcss(argc, argv);
+  initialize_lcs(argc, argv);
   /* search interval for 51200 */
   min_queue_size = 80.0;
   max_queue_size = 135.0;
@@ -99,7 +94,7 @@ void lcss_binary_search(int argc, char **argv){
   n = n1 < n2 ? n1 : n2;
   caching_strategy = get_caching_strategy();
   if(strcmp(caching_strategy, "lru") != 0){
-    printf("lcss batch solver currently only works for lru\n");
+    fprintf(stderr,"lcss batch solver currently only works for lru\n");
     exit(1);
   }
   instance_name = get_instance_name();
@@ -112,7 +107,7 @@ void lcss_binary_search(int argc, char **argv){
   fprintf(fp, "Setting cache miss threshold to %ld\n", cache_miss_threshold);
   fclose(fp);
   #endif
-  set_cache_miss_threshold(cache_miss_threshold);
+  set_cache_miss_threshold_lcs(cache_miss_threshold);
   multiple = (max_queue_size + min_queue_size) / 2.0;
   previous_multiple = multiple + 1;
   for(g = 0; g < MAX_TRIALS; g++){
@@ -146,7 +141,7 @@ void lcss_binary_search(int argc, char **argv){
     /*
     cache_miss_threshold = multiple * (n+1) * (n+1);
     */
-    set_threshold_reached(FALSE);
+    set_threshold_reached(0);
     #ifdef WRITE_LOG
     fp = fopen(log_fname, "a");
     fprintf(fp, "Conducting trial for multiple %f\n", multiple);
